@@ -1,0 +1,30 @@
+                          Birla Institute of Technology and Science Pilani 2nd Sem 2010-2011
+                              IS C342 Structure of Programming Languguages Assignment 1
+
+You are required to build a lexer (assignment 1), parser and translator (assignment 2) for the table tag of HTML.
+In HTML, a table is a set of rows. Each row is a set of cells. A cell contains text. Or, a cell can be an entire table. There are attributes that are attached to a table which specify  the size of the table , the border thickness or other such parameters. Similarly, there are attributes attached to the cell tag which related to the relative width of the cell (%age of the row), or the style , alignment of text etc. All attributes are given as key value pairs enclosed in double quotes “width=50%” etc 
+
+The tokens are as follows (case insensitive-the string literal or the RE is given for each) :
+TK_TABLE_OP  : <table
+TK_TR_OP : <tr
+TK_RT_ANG : >
+TK_TR_CL:</tr>
+TK_TABLE_CL :</table>
+TK_TD_OP : <td
+TK_TD_CL: </td>
+TK_EQ : =
+TK_TEXT : (a-z,A-Z,all other asci chars)+  
+TK_DOUBLE_QUOTES: “
+Write a program that extracts these tokens. Implement the nextToken() function that returns the tokens. For TK_TEXT, the lexeme has to be stored in a globally accessible string buffer.
+Draw the FSA that will be used.
+
+
+                                        IS C342 Structure of Programming Languages 
+Assignment 
+The following CFG generates the table tag described above. The non-terminals are given in italic capitals. The terminals are in bold.
+Table → <table ATTRIBUTES  >ROWS </ table>
+ROWS  →<tr ATTRIBUTES > CELLS ROWS | ε
+CELLS→ <TD> TK_TEXT </TD> CELLS  |  TABLE CELLS  | </TR>
+ATTRIBUTES → TK_TEXT = “TK_TEXT”  ATTRIBUTES  | ε
+
+Build a LL(1) parser for it. Modify the grammar to remove left recursion and left factor it where necessary. Build the parsing table and the parser.
