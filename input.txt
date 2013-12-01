@@ -1,0 +1,13 @@
+<table>
+	<tr>
+		<td>Row1 Cell1</td>
+		<td>Row1 Cell2</td>
+	</tr>
+	<tr>
+		<table>
+			<tr>
+				<td>Nested Table Cell</td>
+			</tr>
+		</table>
+	</tr>
+</table>
